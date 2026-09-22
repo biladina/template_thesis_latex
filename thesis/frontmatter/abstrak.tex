@@ -1,0 +1,32 @@
+% frontmatter/abstrak.tex -- ABSTRAK
+
+\chapter*{ABSTRAK}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+Ulasan produk berbahasa Indonesia pada platform perdagangan
+elektronik terus bertambah setiap hari, sehingga penilaian opini
+konsumen secara manual menjadi tidak efisien. Penelitian ini
+bertujuan merancang, membangun, dan mengevaluasi model klasifikasi
+sentimen berbasis Long Short-Term Memory (LSTM) untuk
+mengklasifikasikan ulasan produk ke dalam tiga kelas, yaitu positif,
+negatif, dan netral, serta membandingkan kinerjanya dengan metode
+pembelajaran mesin konvensional berbasis Support Vector Machine
+(SVM) sebagai \textit{baseline}. Metode yang digunakan meliputi
+praproses data yang disesuaikan dengan karakteristik morfologis
+bahasa Indonesia, seperti normalisasi kata tidak baku dan penghapusan
+stopword, dilanjutkan dengan ekstraksi fitur menggunakan
+\textit{word embedding} dan pelatihan model LSTM dengan satu lapisan
+tersembunyi berisi 128 unit. Kinerja model dievaluasi menggunakan
+metrik akurasi, presisi, recall, dan F1-score pada data uji yang
+terpisah dari data latih. Hasil pengujian menunjukkan bahwa model
+LSTM yang diusulkan memperoleh F1-score sebesar 0,85, lebih tinggi
+dibandingkan model \textit{baseline} SVM yang hanya memperoleh
+F1-score sebesar 0,75. Peningkatan kinerja tersebut terutama terlihat
+pada kemampuan model LSTM dalam menangani kalimat yang mengandung
+pola negasi, meskipun model masih menunjukkan keterbatasan dalam
+menangani ulasan yang mengandung sarkasme atau opini implisit. Hasil
+penelitian ini diharapkan dapat dimanfaatkan sebagai dasar
+pengembangan sistem pemantauan opini konsumen secara otomatis.
+
+\vskip 2\baselineskip
+\noindent\textbf{Kata kunci : analisis sentimen, LSTM, ulasan produk,
+Support Vector Machine}

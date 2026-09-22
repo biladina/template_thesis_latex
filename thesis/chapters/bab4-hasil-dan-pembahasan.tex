@@ -1,0 +1,79 @@
+% chapters/bab4-hasil-dan-pembahasan.tex -- BAB 4 HASIL DAN PEMBAHASAN
+% Contoh teks ilmiah di bawah ini adalah placeholder untuk memperlihatkan
+% hasil format (thesis.md); ganti dengan isi penelitian yang sebenarnya.
+
+\chapter{HASIL DAN PEMBAHASAN}
+
+\section{Hasil Praproses Data}
+Tahapan praproses data menghasilkan korpus ulasan produk yang telah
+dibersihkan dari karakter tidak relevan, dinormalisasi dari kata
+tidak baku, dan dihilangkan kata hentinya (stopword). Setelah tahapan
+praproses, jumlah token unik pada korpus berkurang secara signifikan
+dibandingkan dengan korpus mentah, yang menunjukkan bahwa normalisasi
+kata tidak baku berhasil menyatukan variasi ejaan informal ke dalam
+bentuk kata baku yang konsisten. Contoh hasil praproses untuk satu
+ulasan ditampilkan pada Gambar~\ref{fig:praproses}.
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][3.5cm][c]{0.8\linewidth}{\centering
+    Contoh diagram tahapan praproses teks\\
+    (ganti dengan \texttt{\textbackslash includegraphics})}}
+  \caption{Contoh hasil tahapan praproses data ulasan}
+  \label{fig:praproses}
+\end{figure}
+
+\section{Hasil Pelatihan Model}
+Model LSTM dilatih menggunakan data latih selama sejumlah epoch
+hingga nilai fungsi kerugian (\textit{loss}) pada data validasi tidak
+lagi menurun secara signifikan. Grafik nilai \textit{loss} dan
+akurasi selama proses pelatihan menunjukkan bahwa model mulai
+menunjukkan gejala \textit{overfitting} setelah epoch tertentu,
+sehingga digunakan mekanisme \textit{early stopping} untuk menghentikan
+pelatihan pada titik kinerja validasi terbaik.
+
+\section{Hasil Pengujian}
+Kinerja model LSTM yang diusulkan dibandingkan dengan model
+\textit{baseline} berbasis SVM pada data uji. Ringkasan hasil
+pengujian disajikan pada Tabel~\ref{tab:hasil-pengujian}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Perbandingan kinerja model pada data uji}
+  \label{tab:hasil-pengujian}
+  \singlespaced{%
+    \begin{tabular}{lcccc}
+      \hline
+      Model    & Akurasi & Presisi & Recall & F1-score \\
+      \hline
+      SVM (baseline) & 0.78 & 0.76 & 0.75 & 0.75 \\
+      LSTM (usulan)  & 0.87 & 0.86 & 0.85 & 0.85 \\
+      \hline
+    \end{tabular}%
+  }
+\end{table}
+
+Berdasarkan Tabel~\ref{tab:hasil-pengujian}, model LSTM yang diusulkan
+memperoleh nilai F1-score yang lebih tinggi dibandingkan model
+\textit{baseline} pada seluruh kelas sentimen, dengan peningkatan
+yang paling terlihat pada kelas netral.
+
+\section{Pembahasan}
+Peningkatan kinerja model LSTM dibandingkan dengan model SVM diduga
+disebabkan oleh kemampuan LSTM dalam menangkap hubungan kontekstual
+antar kata dalam suatu kalimat, termasuk pola negasi yang sering
+menjadi sumber kesalahan klasifikasi pada model berbasis fitur kata
+tunggal seperti SVM. Sebagai contoh, kalimat yang mengandung frasa
+negasi seperti ``tidak bagus'' cenderung diklasifikasikan secara
+tepat oleh model LSTM karena model tersebut mempertimbangkan urutan
+kata, sedangkan model SVM yang menggunakan representasi
+\textit{bag-of-words} cenderung salah mengklasifikasikan kalimat
+tersebut sebagai sentimen positif akibat munculnya kata ``bagus''.
+
+Meskipun demikian, model LSTM masih menunjukkan tingkat kesalahan
+yang relatif tinggi pada ulasan yang mengandung sarkasme atau opini
+implisit, yang secara umum juga menjadi tantangan pada penelitian
+analisis sentimen lainnya \citep{example2022}. Temuan ini menunjukkan
+bahwa masih terdapat ruang untuk perbaikan pada penelitian
+selanjutnya, misalnya dengan memanfaatkan model berbasis Transformer
+yang memiliki kemampuan pemahaman konteks yang lebih baik.

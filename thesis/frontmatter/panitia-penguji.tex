@@ -1,0 +1,34 @@
+% frontmatter/panitia-penguji.tex -- PANITIA PENGUJI (thesis.md S3.7)
+%
+% Unlike the other front-matter sheets, this page prints no title at
+% the top -- the reference layout (PDFsam_merge.pdf p.6) starts
+% straight in with the exam result line at the normal top margin, and
+% "PANITIA PENGUJI TESIS" only appears later as a left-aligned heading
+% pushed down near the bottom of the page. \chapter* always renders a
+% centered title through \@makeschapterhead before any body text, so
+% it can't produce that gap; \clearpage + \thispagestyle{plain} +
+% \addcontentsline are called directly instead, replicating only the
+% page-break/hidden-page-number/TOC-entry side effects \chapter*
+% would otherwise have provided.
+\clearpage
+\thispagestyle{plain}
+% Without its own anchor here, this entry's link/bookmark would
+% resolve to whatever \chapter* last created one -- Persetujuan
+% Publikasi's page -- since this file never calls \chapter* itself.
+\phantomsection
+\addcontentsline{toc}{chapter}{PANITIA PENGUJI}
+
+\noindent Telah diuji dan dinyatakan lulus pada\par
+\noindent Tanggal \thesisTanggalUjian\par
+\noindent\rule{\linewidth}{0.4pt}
+
+\vfill
+\noindent\textbf{PANITIA PENGUJI TESIS}
+
+\vskip 1.5\baselineskip
+\noindent\begin{fieldlist}
+\fieldrow{Ketua}{\thesisPengujiSatu}
+\fieldrow{Anggota}{\thesisPengujiDua}
+ & : & \thesisPembimbingSatuNama\\[2mm]
+ & : & \thesisPembimbingDuaNama\\[2mm]
+\end{fieldlist}

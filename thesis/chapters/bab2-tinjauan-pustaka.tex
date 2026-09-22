@@ -1,0 +1,100 @@
+% chapters/bab2-tinjauan-pustaka.tex -- BAB 2 TINJAUAN PUSTAKA
+% Contoh teks ilmiah di bawah ini adalah placeholder untuk memperlihatkan
+% hasil format (thesis.md); ganti dengan isi penelitian yang sebenarnya.
+
+\chapter{TINJAUAN PUSTAKA}
+
+\section{Penelitian Terdahulu}
+Beberapa penelitian sebelumnya telah membahas klasifikasi sentimen
+pada teks berbahasa Indonesia dengan berbagai pendekatan. Penelitian
+oleh \citet{example2021} menerapkan metode Support Vector Machine
+untuk mengklasifikasikan sentimen ulasan film, dan memperoleh akurasi
+yang cukup tinggi meskipun masih terdapat kesalahan klasifikasi pada
+kalimat yang mengandung negasi. Penelitian lain oleh
+\citet{example2022} membandingkan beberapa arsitektur jaringan saraf
+tiruan untuk klasifikasi sentimen ulasan produk, dan menyimpulkan
+bahwa model berbasis RNN secara konsisten mengungguli model berbasis
+Bag-of-Words pada dataset berukuran besar.
+
+Penelitian oleh \citet{example2023} secara khusus mengkaji pengaruh
+tahapan praproses, seperti normalisasi kata tidak baku dan penghapusan
+stopword, terhadap kinerja model klasifikasi sentimen berbahasa
+Indonesia. Hasil penelitian tersebut menunjukkan bahwa normalisasi
+kata tidak baku memberikan kontribusi peningkatan akurasi yang lebih
+besar dibandingkan dengan penghapusan stopword semata. Temuan ini
+menjadi salah satu pertimbangan dalam merancang tahapan praproses
+pada penelitian ini.
+
+Selain isu praproses, kualitas dan cakupan data uji turut memengaruhi
+keandalan model. Sebuah tolok ukur (benchmark) berskala besar untuk
+klasifikasi teks pernah dievaluasi oleh \citet{example2016techreport},
+yang menemukan bahwa performa model sangat bergantung pada
+representasi fitur yang digunakan \citep{example2018incollection}.
+Temuan tersebut sejalan dengan hasil sebelumnya yang menunjukkan
+pentingnya tahapan praproses yang tepat sebelum data digunakan untuk
+melatih model \citep{example2016techreport}.
+
+Berbeda dengan penelitian-penelitian tersebut, penelitian ini berfokus
+pada penerapan arsitektur LSTM secara spesifik untuk ulasan produk
+berbahasa Indonesia dengan skema praproses yang disesuaikan, serta
+melakukan perbandingan kinerja secara langsung dengan metode
+pembelajaran mesin konvensional pada dataset yang sama
+\citep{example2021,soemanto1993}.
+
+\section{Landasan Teori}
+
+\subsection{Pemrosesan bahasa alami dan analisis sentimen}
+Pemrosesan Bahasa Alami (Natural Language Processing, NLP) merupakan
+cabang ilmu komputer yang mempelajari interaksi antara komputer dan
+bahasa manusia, baik dalam bentuk teks maupun ucapan. Salah satu
+tugas populer dalam NLP adalah analisis sentimen (sentiment
+analysis), yaitu proses identifikasi dan ekstraksi opini subjektif
+dari suatu teks untuk menentukan polaritasnya, apakah bernilai
+positif, negatif, atau netral. Analisis sentimen umumnya melibatkan
+beberapa tahapan, yaitu pengumpulan data, praproses teks, ekstraksi
+fitur, dan klasifikasi.
+
+\subsection{Praproses teks berbahasa Indonesia}
+Tahapan praproses teks bertujuan untuk mengubah teks mentah menjadi
+representasi yang lebih terstruktur dan siap diolah oleh model
+pembelajaran mesin. Tahapan yang umum dilakukan meliputi \textit{case
+folding}, tokenisasi, normalisasi kata tidak baku, penghapusan
+stopword, dan \textit{stemming}. Untuk bahasa Indonesia, tahapan
+normalisasi kata tidak baku memegang peranan penting karena banyaknya
+variasi ejaan informal yang digunakan pengguna pada media sosial dan
+platform ulasan produk, misalnya kata ``bgs'' untuk ``bagus'' atau
+``gak'' untuk ``tidak''.
+
+\subsection{Long short-term memory}
+Long Short-Term Memory (LSTM) adalah salah satu varian dari Recurrent
+Neural Network (RNN) yang dirancang untuk mengatasi masalah
+\textit{vanishing gradient} yang umum terjadi pada RNN standar ketika
+memproses data sekuensial yang panjang. LSTM memperkenalkan struktur
+sel memori (\textit{cell state}) yang dilengkapi dengan tiga gerbang
+utama, yaitu \textit{forget gate}, \textit{input gate}, dan
+\textit{output gate}. Ketiga gerbang tersebut bekerja sama untuk
+mengatur informasi apa yang perlu dipertahankan, ditambahkan, atau
+dibuang dari sel memori pada setiap langkah waktu, sehingga model
+dapat mempelajari dependensi jangka panjang pada data teks dengan
+lebih baik dibandingkan RNN standar.
+
+Persamaan umum untuk memperbarui sel memori pada LSTM dapat dituliskan
+sebagai berikut.
+\begin{equation}
+  c_t = f_t \odot c_{t-1} + i_t \odot \tilde{c}_t
+  \label{eq:lstm-cell}
+\end{equation}
+dengan $f_t$ adalah nilai \textit{forget gate}, $i_t$ adalah nilai
+\textit{input gate}, $c_{t-1}$ adalah sel memori pada langkah waktu
+sebelumnya, dan $\tilde{c}_t$ adalah kandidat nilai sel memori baru
+pada langkah waktu $t$, seperti pada Persamaan~\eqref{eq:lstm-cell}.
+
+\section{Kerangka Berpikir}
+Berdasarkan tinjauan pustaka di atas, penelitian ini menyusun
+kerangka berpikir yang terdiri atas empat tahap utama, yaitu
+pengumpulan data ulasan produk, praproses teks yang disesuaikan
+dengan karakteristik bahasa Indonesia, perancangan dan pelatihan
+model LSTM, serta evaluasi kinerja model dengan membandingkannya
+terhadap metode pembelajaran mesin konvensional. Kerangka berpikir
+ini menjadi dasar penyusunan metodologi penelitian pada bab
+berikutnya.

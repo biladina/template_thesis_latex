@@ -1,0 +1,32 @@
+% frontmatter/abstract.tex -- ABSTRACT (thesis.md S3.11): starts with
+% the English translation of the thesis title, then the word ABSTRACT.
+
+\starChapterHead{{\bfseries\itshape\MakeUppercase{\thesisTitleEnglish}\par}\vskip 1.5\baselineskip}{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+
+\noindent Indonesian-language product reviews on e-commerce platforms keep
+growing every day, making manual assessment of consumer opinions
+inefficient. This research aims to design, build, and evaluate a
+sentiment classification model based on Long Short-Term Memory
+(LSTM) to classify product reviews into three classes, namely
+positive, negative, and neutral, and to compare its performance
+against a conventional machine learning method based on Support
+Vector Machine (SVM) as a baseline. The method includes data
+preprocessing tailored to the morphological characteristics of the
+Indonesian language, such as informal-word normalization and
+stopword removal, followed by feature extraction using word
+embeddings and training an LSTM model with a single hidden layer of
+128 units. Model performance is evaluated using accuracy, precision,
+recall, and F1-score on a held-out test set. The test results show
+that the proposed LSTM model achieves an F1-score of 0.85, higher
+than the baseline SVM model, which only achieves an F1-score of
+0.75. The performance improvement is particularly evident in the
+LSTM model's ability to handle sentences containing negation,
+although the model still shows limitations in handling reviews that
+contain sarcasm or implicit opinions. The results of this research
+are expected to serve as a basis for developing an automated
+consumer-opinion monitoring system.
+
+\vskip 2\baselineskip
+\noindent\textbf{Keywords : sentiment analysis, LSTM, product reviews,
+Support Vector Machine}

@@ -1,0 +1,30 @@
+% frontmatter/pengesahan.tex -- PENGESAHAN (thesis.md S3.4)
+
+\chapter*{PENGESAHAN TESIS}
+\addcontentsline{toc}{chapter}{PENGESAHAN}
+
+% \fitOnPage keeps the field table and both signature blocks on this
+% one page even if a long thesis title wraps the Judul row to 2-3
+% lines: it reclaims only the shortfall (capped at 25mm) from the
+% blank space under the heading, never from the signature gaps below.
+\fitOnPage{25mm}{%
+\begin{fieldlist}
+\fieldrow{Judul}{\thesisTitle}
+\fieldrow{Kategori}{Tesis}
+\fieldrow{Nama}{\thesisAuthor}
+\fieldrow{Nomor Induk Mahasiswa}{\thesisNim}
+\fieldrow{Program Studi}{\thesisProgramStudi}
+\fieldrow{Fakultas}{\thesisFakultasNama \, \thesisUniversitasNama}
+\fieldrow{Komisi Pembimbing}{}
+\end{fieldlist}
+
+\vspace{4mm}
+\twinSignatures{Pembimbing I}{\thesisPembimbingSatuNama}{\thesisPembimbingSatuNip}%
+  {Pembimbing II}{\thesisPembimbingDuaNama}{\thesisPembimbingDuaNip}
+
+\vspace{9mm}
+\twinSignatures{Diketahui/disetujui oleh,\\Kaprodi Magister (S2)\\\thesisProgramStudi}%
+  {\thesisKaprodiNama}{\thesisKaprodiNip}%
+  {Diketahui/disetujui oleh,\\Dekan\\Fasilkom-TI}%
+  {\thesisDekanNama}{\thesisDekanNip}
+}

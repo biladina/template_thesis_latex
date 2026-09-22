@@ -1,0 +1,50 @@
+% chapters/bab5-kesimpulan-dan-saran.tex -- BAB 5 KESIMPULAN DAN SARAN
+% Contoh teks ilmiah di bawah ini adalah placeholder untuk memperlihatkan
+% hasil format (thesis.md); ganti dengan isi penelitian yang sebenarnya.
+
+\chapter{KESIMPULAN DAN SARAN}
+
+\section{Kesimpulan}
+Berdasarkan hasil penelitian dan pembahasan pada bab sebelumnya, dapat
+disimpulkan beberapa hal sebagai berikut.
+\begin{enumerate}
+  \item Tahapan praproses yang disesuaikan dengan karakteristik
+        bahasa Indonesia, khususnya normalisasi kata tidak baku,
+        terbukti memberikan kontribusi yang signifikan terhadap
+        kualitas data sebelum digunakan pada model klasifikasi
+        sentimen.
+  \item Model LSTM dengan arsitektur satu lapisan tersembunyi berhasil
+        mengklasifikasikan sentimen ulasan produk berbahasa Indonesia
+        dengan kinerja yang lebih baik dibandingkan model
+        \textit{baseline} berbasis SVM, dengan peningkatan F1-score
+        sebesar 10 poin persentase pada data uji.
+  \item Kemampuan LSTM dalam mempertimbangkan urutan kata terbukti
+        efektif dalam menangani kalimat yang mengandung pola negasi,
+        yang menjadi salah satu sumber kesalahan klasifikasi utama
+        pada model berbasis fitur kata tunggal.
+  \item Model yang diusulkan masih menunjukkan keterbatasan dalam
+        menangani ulasan yang mengandung sarkasme atau opini implisit,
+        sehingga tingkat kesalahan klasifikasi pada kategori tersebut
+        relatif lebih tinggi dibandingkan kategori lainnya.
+\end{enumerate}
+
+\section{Saran}
+Berdasarkan kesimpulan di atas, beberapa saran yang dapat
+dipertimbangkan untuk penelitian selanjutnya adalah sebagai berikut.
+\begin{enumerate}
+  \item Penelitian selanjutnya dapat mempertimbangkan penggunaan
+        model berbasis Transformer, seperti BERT yang telah
+        dilatih khusus untuk bahasa Indonesia, guna meningkatkan
+        kemampuan model dalam memahami konteks kalimat secara lebih
+        mendalam.
+  \item Penambahan jumlah dan variasi data latih, khususnya pada
+        ulasan yang mengandung sarkasme, diharapkan dapat membantu
+        model mempelajari pola opini implisit dengan lebih baik.
+  \item Penelitian selanjutnya dapat mengeksplorasi kombinasi metode
+        LSTM dengan mekanisme \textit{attention} untuk meningkatkan
+        kemampuan model dalam berfokus pada bagian kalimat yang lebih
+        relevan terhadap sentimen yang diekspresikan.
+  \item Evaluasi lebih lanjut terhadap efisiensi komputasi model perlu
+        dilakukan apabila model akan diterapkan pada sistem pemantauan
+        ulasan produk secara \textit{real-time}.
+\end{enumerate}

@@ -1,0 +1,104 @@
+% main.tex -- actual paper content.
+% Template/formatting logic lives in intlpaper.cls; edit only content here.
+% Compile with: xelatex main.tex && bibtex main && xelatex main.tex && xelatex main.tex
+
+\documentclass{intlpaper}
+
+\title{A Descriptive and Specific Title of Your Research Paper}
+
+\paperauthors{%
+  \authorblock{First A. Author}{Department of Computer Science\\University Name, City, Country}{first.author@university.edu}%
+  \hfill
+  \authorblock{Second B. Author}{Department of Computer Science\\University Name, City, Country}{second.author@university.edu}%
+  \hfill
+  \authorblock{Third C. Author}{Faculty of Engineering\\Another University, City, Country}{third.author@another.edu}%
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents a concise summary of the research problem, the proposed
+approach, and the main findings. The abstract should be self-contained,
+typically 150--250 words, and state the motivation, method, key results, and
+significance of the work without citing references or using undefined
+abbreviations.
+\end{abstract}
+
+\begin{keywords}
+keyword one, keyword two, keyword three, keyword four
+\end{keywords}
+
+\section{Introduction}
+State the problem being addressed, why it matters, and how this work
+advances the state of the art. Close the introduction with a short summary
+of the paper's contributions and its organization, for example: ``The
+remainder of this paper is organized as follows. Section~II reviews related
+work. Section~III describes the proposed method. Section~IV presents the
+experimental results. Section~V concludes the paper.''
+
+A sample citation looks like this~\cite{smith2023}, and multiple citations
+can be grouped together~\cite{lee2022,brown2021}.
+
+\section{Related Work}
+Summarize prior work relevant to the problem, positioning the contribution
+of this paper against existing approaches~\cite{lee2022}.
+
+\section{Methodology}
+Describe the proposed method, dataset, or theoretical framework in enough
+detail for the work to be reproducible.
+
+\subsection{Problem Formulation}
+Introduce notation and formal definitions here. Equations are numbered and
+can be referenced later, e.g. Eq.~\eqref{eq:example}.
+
+\begin{equation}
+  y = f(x; \theta) = \sum_{i=1}^{n} \theta_i x_i + b
+  \label{eq:example}
+\end{equation}
+
+\subsection{Proposed Approach}
+Explain the core method, algorithm, or model architecture.
+
+\section{Results and Discussion}
+Present experimental results with supporting figures and tables.
+Figure~\ref{fig:example} illustrates a placeholder result, and
+Table~\ref{tab:example} summarizes example data.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\parbox[c][4cm][c]{0.9\linewidth}{\centering Figure placeholder --\\replace with \texttt{\textbackslash includegraphics}}}
+  \caption{Example figure caption describing the content and key takeaway.}
+  \label{fig:example}
+\end{figure}
+
+\begin{table}[t]
+  \centering
+  \caption{Example comparison of methods.}
+  \label{tab:example}
+  \begin{tabular}{lcc}
+    \hline
+    Method & Metric A & Metric B \\
+    \hline
+    Baseline    & 0.72 & 0.65 \\
+    Proposed    & \textbf{0.85} & \textbf{0.79} \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Discuss the results, comparing them against the baseline and related work,
+and interpret their significance.
+
+\section{Conclusion}
+Summarize the main contributions, findings, and limitations, and suggest
+directions for future work.
+
+\section*{Acknowledgment}
+Optional section acknowledging funding sources, institutions, or individuals
+who contributed to the work but do not qualify as authors.
+
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}

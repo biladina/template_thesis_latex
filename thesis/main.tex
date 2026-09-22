@@ -1,0 +1,106 @@
+% main.tex -- thesis orchestrator: pulls in every chapter file.
+% Template/formatting logic lives in thesis.cls; per-chapter content
+% lives under frontmatter/, chapters/, and backmatter/ -- edit those,
+% not this file, unless you are adding or reordering a chapter.
+% Compile with: xelatex main.tex && bibtex main && xelatex main.tex && xelatex main.tex
+
+\documentclass{thesis}
+
+\title{Judul Tesis Anda Ditulis di Sini}
+\author{Nama Mahasiswa}
+\nim{2670560xx}
+\logoFakultas{figures/logo.png}
+\gelarMagister{Sains Data dan Kecerdasan Buatan}
+% \titleEnglish{English Translation of the Thesis Title} % used on the Abstract page
+
+% Fields below feed Pengesahan, Panitia Penguji, and Ucapan Terima
+% Kasih (thesis.cls has placeholder defaults for all of them, so the
+% template still compiles before these are filled in).
+% \pembimbingSatu{Nama Pembimbing I}{NIP Pembimbing I}
+% \pembimbingDua{Nama Pembimbing II}{NIP Pembimbing II}
+% \kaprodi{Nama Ketua Program Studi}{NIP Ketua Program Studi}
+% \dekan{Nama Dekan}{NIP Dekan}
+% \rektor{Nama Rektor}
+% \pengujiSatu{Nama Penguji I}
+% \pengujiDua{Nama Penguji II}
+% \tanggalUjian{DD Bulan YYYY}
+% \tanggalPernyataan{DD Bulan YYYY}
+% \tempatTanggalLahir{Kota, DD Bulan YYYY}
+% \alamatRumah{Alamat rumah mahasiswa}
+% \teleponMahasiswa{08xx-xxxx-xxxx}
+% \emailMahasiswa{nama@students.usu.ac.id}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\input{frontmatter/pengesahan}
+\input{frontmatter/pernyataan-orisinalitas}
+\input{frontmatter/persetujuan-publikasi}
+\input{frontmatter/panitia-penguji}
+\input{frontmatter/riwayat-hidup}
+\input{frontmatter/ucapan-terima-kasih}
+\input{frontmatter/abstrak}
+\input{frontmatter/abstract}
+
+% \tableofcontents doesn't list itself by default (same gap as
+% \listoftables/\listoffigures below, which already work around it).
+% Daftar Isi runs onto a second page here, so the page number must be
+% captured on ITS OWN \clearpage -- forced explicitly first -- rather
+% than before \tableofcontents (captures the page before its internal
+% break: wrong) or after it returns (captures wherever the listing
+% happened to end, i.e. the continuation page: also wrong).
+% \tableofcontents's own internal page break becomes a harmless no-op
+% once called immediately after, since nothing has been contributed
+% to this already-fresh page yet.
+\clearpage
+% Without its own anchor here, this entry's link/bookmark would
+% resolve to whatever \chapter* last created one -- Abstract's page,
+% since \tableofcontents's own \chapter* (which would normally supply
+% this) hasn't run yet at the point \addcontentsline is called below.
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents
+
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+
+\input{frontmatter/daftar-istilah}
+
+\mainmatter
+
+\input{chapters/bab1-pendahuluan}
+\input{chapters/bab2-tinjauan-pustaka}
+\input{chapters/bab3-metodologi-penelitian}
+\input{chapters/bab4-hasil-dan-pembahasan}
+\input{chapters/bab5-kesimpulan-dan-saran}
+
+\backmatter
+
+% Same fix as Daftar Isi above: \addcontentsline must be captured on
+% Daftar Pustaka's OWN page, forced explicitly first, rather than
+% before \bibliography's internal \chapter*{\bibname} actually breaks
+% the page and creates its anchor -- otherwise this entry's page
+% number and link both resolve to wherever Bab 5 happened to leave
+% off (its own \chapter*'s later break becomes a no-op immediately
+% after, since nothing has been contributed to this fresh page yet).
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{apalike-usu}
+% \nocite{*} pulls in every entry from references.bib, including the
+% ones under "S4.3-S4.9 entry-type demo" that aren't \cite'd in the
+% chapter text, so the Daftar Pustaka shows every format
+% apalike-usu.bst supports. Remove this once references.bib only
+% holds real, cited sources.
+\nocite{*}
+\bibliography{references}
+
+\input{backmatter/lampiran}
+
+\end{document}

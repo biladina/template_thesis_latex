@@ -1,0 +1,97 @@
+% chapters/bab3-metodologi-penelitian.tex -- BAB 3 METODOLOGI PENELITIAN
+% Contoh teks ilmiah di bawah ini adalah placeholder untuk memperlihatkan
+% hasil format (thesis.md); ganti dengan isi penelitian yang sebenarnya.
+
+\chapter{METODOLOGI PENELITIAN}
+
+\section{Jenis dan Pendekatan Penelitian}
+Penelitian ini menggunakan pendekatan eksperimental kuantitatif, yaitu
+dengan membangun model klasifikasi sentimen berbasis LSTM,
+melatihnya menggunakan data ulasan produk berbahasa Indonesia, dan
+mengukur kinerjanya menggunakan metrik evaluasi standar pada bidang
+pembelajaran mesin. Hasil model yang diusulkan kemudian dibandingkan
+dengan model \textit{baseline} berbasis Support Vector Machine (SVM)
+untuk mengetahui sejauh mana peningkatan kinerja yang dapat dicapai.
+
+\section{Data Penelitian}
+Data yang digunakan dalam penelitian ini adalah kumpulan ulasan
+produk berbahasa Indonesia yang diambil dari salah satu platform
+perdagangan elektronik, terdiri atas teks ulasan beserta label
+sentimen (positif, negatif, netral) yang diberikan oleh pengguna
+melalui penilaian bintang. Data tersebut dibagi menjadi data latih,
+data validasi, dan data uji dengan proporsi 70:15:15 untuk memastikan
+evaluasi model dilakukan pada data yang belum pernah dilihat selama
+proses pelatihan.
+
+\section{Tahapan Penelitian}
+Penelitian ini dilaksanakan melalui beberapa tahapan sebagai berikut.
+\begin{enumerate}
+  \item \textbf{Pengumpulan data.} Data ulasan produk dikumpulkan
+        beserta label sentimennya, kemudian diperiksa kualitasnya
+        untuk memastikan tidak ada data yang duplikat atau tidak
+        relevan.
+  \item \textbf{Praproses data.} Data ulasan melalui tahapan
+        \textit{case folding}, tokenisasi, normalisasi kata tidak
+        baku, penghapusan stopword, dan \textit{stemming}
+        menggunakan kamus normalisasi bahasa Indonesia.
+  \item \textbf{Ekstraksi fitur.} Teks hasil praproses diubah menjadi
+        representasi vektor menggunakan teknik \textit{word
+        embedding}, yang kemudian digunakan sebagai masukan bagi
+        lapisan LSTM.
+  \item \textbf{Perancangan dan pelatihan model.} Model LSTM
+        dirancang dan dilatih menggunakan data latih, dengan
+        penyesuaian hiperparameter dilakukan berdasarkan kinerja pada
+        data validasi.
+  \item \textbf{Evaluasi model.} Kinerja model diuji menggunakan data
+        uji dan dibandingkan dengan model \textit{baseline}
+        menggunakan metrik evaluasi yang telah ditentukan.
+\end{enumerate}
+
+\section{Perancangan Model}
+
+\subsection{Arsitektur model LSTM yang diusulkan}
+Model yang diusulkan pada penelitian ini terdiri atas lapisan
+\textit{embedding}, satu lapisan LSTM dengan 128 unit tersembunyi,
+lapisan \textit{dropout} untuk mengurangi risiko \textit{overfitting},
+dan lapisan \textit{fully connected} dengan fungsi aktivasi softmax
+pada lapisan keluaran untuk menghasilkan probabilitas masing-masing
+kelas sentimen. Ringkasan arsitektur model disajikan pada
+Tabel~\ref{tab:arsitektur}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Ringkasan arsitektur model LSTM yang diusulkan}
+  \label{tab:arsitektur}
+  \singlespaced{%
+    \begin{tabular}{lll}
+      \hline
+      Lapisan & Jumlah Unit & Fungsi Aktivasi \\
+      \hline
+      Embedding       & 128 & -- \\
+      LSTM             & 128 & tanh \\
+      Dropout (0.5)    & --  & -- \\
+      Fully Connected  & 3   & softmax \\
+      \hline
+    \end{tabular}%
+  }
+\end{table}
+
+\subsection{Penyesuaian hiperparameter}
+Penyesuaian hiperparameter dilakukan terhadap ukuran \textit{batch},
+laju pembelajaran (\textit{learning rate}), dan jumlah epoch
+pelatihan. Nilai hiperparameter terbaik dipilih berdasarkan kinerja
+tertinggi pada data validasi, guna menghindari model yang terlalu
+menyesuaikan diri pada data latih.
+
+\section{Metode Evaluasi}
+Kinerja model dievaluasi menggunakan metrik akurasi, presisi, recall,
+dan F1-score, yang dihitung berdasarkan matriks konfusi hasil
+klasifikasi pada data uji. Perhitungan F1-score dapat dituliskan
+sebagai berikut.
+\begin{equation}
+  \text{F1} = 2 \times \frac{\text{presisi} \times \text{recall}}{\text{presisi} + \text{recall}}
+  \label{eq:f1score}
+\end{equation}
+Persamaan~\eqref{eq:f1score} digunakan karena F1-score memberikan
+gambaran yang lebih seimbang dibandingkan akurasi semata, terutama
+apabila distribusi kelas pada data uji tidak seimbang.

@@ -1,0 +1,80 @@
+% chapters/bab1-pendahuluan.tex -- BAB 1 PENDAHULUAN
+% Contoh teks ilmiah di bawah ini adalah placeholder untuk memperlihatkan
+% hasil format (thesis.md); ganti dengan isi penelitian yang sebenarnya.
+
+\chapter{PENDAHULUAN}
+
+\section{Latar Belakang Masalah}
+Perkembangan teknologi informasi telah mendorong lonjakan volume data
+tekstual yang dihasilkan pengguna internet, terutama dalam bentuk
+ulasan produk pada platform perdagangan elektronik. Ulasan tersebut
+memuat opini konsumen yang sangat berharga bagi pelaku usaha, baik
+untuk mengevaluasi kualitas produk maupun untuk merumuskan strategi
+pemasaran. Namun demikian, jumlah ulasan yang terus bertambah setiap
+hari membuat proses pembacaan dan penilaian opini secara manual
+menjadi tidak efisien, sehingga dibutuhkan suatu pendekatan otomatis
+yang mampu mengklasifikasikan sentimen ulasan tersebut ke dalam
+kategori positif, negatif, atau netral.
+
+Berbagai pendekatan pembelajaran mesin telah digunakan untuk
+menyelesaikan permasalahan klasifikasi sentimen, mulai dari metode
+statistik konvensional seperti Naive Bayes dan Support Vector Machine,
+hingga metode pembelajaran mendalam (deep learning) yang mampu
+menangkap hubungan kontekstual antar kata dalam suatu kalimat. Salah
+satu arsitektur yang banyak digunakan untuk data sekuensial seperti
+teks adalah Long Short-Term Memory (LSTM), sebuah varian dari
+Recurrent Neural Network (RNN) yang dirancang untuk mengatasi masalah
+vanishing gradient pada data berurutan yang panjang.
+
+Bahasa Indonesia memiliki karakteristik morfologis dan tata bahasa
+yang berbeda dari bahasa Inggris, seperti penggunaan imbuhan, kata
+tidak baku, dan campur kode dengan bahasa daerah maupun bahasa asing
+pada ulasan produk. Karakteristik ini menjadi tantangan tersendiri
+dalam praproses data sebelum data tersebut dapat digunakan untuk
+melatih model klasifikasi. Oleh karena itu, penelitian ini berfokus
+pada penerapan metode LSTM untuk klasifikasi sentimen ulasan produk
+berbahasa Indonesia, dengan memperhatikan tahapan praproses yang
+sesuai dengan karakteristik bahasa tersebut.
+
+\section{Rumusan Masalah}
+Berdasarkan uraian latar belakang di atas, rumusan masalah dalam
+penelitian ini adalah sebagai berikut.
+\begin{enumerate}
+  \item Bagaimana tahapan praproses data yang tepat untuk ulasan
+        produk berbahasa Indonesia sebelum digunakan pada model LSTM.
+  \item Bagaimana arsitektur model LSTM yang optimal untuk
+        mengklasifikasikan sentimen ulasan produk berbahasa Indonesia.
+  \item Bagaimana tingkat akurasi model LSTM dibandingkan dengan
+        metode pembelajaran mesin konvensional pada dataset yang sama.
+\end{enumerate}
+
+\subsection{Batasan masalah penelitian}
+Agar penelitian ini lebih terarah, permasalahan dibatasi pada
+beberapa hal berikut: data yang digunakan adalah ulasan produk
+berbahasa Indonesia yang diambil dari salah satu platform perdagangan
+elektronik; klasifikasi sentimen dibatasi pada tiga kelas, yaitu
+positif, negatif, dan netral; serta model yang dibangun tidak
+dibandingkan dengan model berbasis Transformer mengingat keterbatasan
+sumber daya komputasi yang tersedia.
+
+\section{Tujuan Penelitian}
+Penelitian ini bertujuan untuk merancang, membangun, dan mengevaluasi
+model klasifikasi sentimen berbasis LSTM untuk ulasan produk
+berbahasa Indonesia, serta membandingkan kinerjanya dengan metode
+pembelajaran mesin konvensional sebagai baseline.
+
+\section{Manfaat Penelitian}
+Manfaat penelitian ini dijabarkan ke dalam dua aspek, yaitu manfaat
+teoretis dan manfaat praktis.
+
+\subsection{Manfaat teoretis bagi pengembangan ilmu}
+Secara teoretis, penelitian ini diharapkan dapat memperkaya kajian di
+bidang pemrosesan bahasa alami, khususnya mengenai penerapan metode
+LSTM pada data berbahasa Indonesia yang memiliki karakteristik
+morfologis khas.
+
+\subsection{Manfaat praktis bagi pelaku usaha}
+Secara praktis, hasil penelitian ini diharapkan dapat dimanfaatkan
+oleh pelaku usaha untuk memantau opini konsumen secara otomatis dan
+efisien, sehingga dapat digunakan sebagai bahan pertimbangan dalam
+pengambilan keputusan bisnis.

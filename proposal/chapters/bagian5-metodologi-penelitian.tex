@@ -1,0 +1,42 @@
+% chapters/bagian5-metodologi-penelitian.tex
+% proposal.md bagian 5: Metodologi penelitian.
+% Contoh teks ilmiah di bawah ini adalah placeholder untuk memperlihatkan
+% hasil format; ganti dengan isi proposal yang sebenarnya.
+
+\chapter{Metodologi Penelitian}
+
+\section{Jenis dan Pendekatan Penelitian}
+Penelitian ini menggunakan pendekatan eksperimental kuantitatif, yaitu
+dengan membangun model klasifikasi sentimen berbasis LSTM,
+melatihnya menggunakan data ulasan produk berbahasa Indonesia, dan
+mengukur kinerjanya menggunakan metrik evaluasi standar pada bidang
+pembelajaran mesin.
+
+\section{Data Penelitian}
+Data yang digunakan dalam penelitian ini adalah kumpulan ulasan
+produk berbahasa Indonesia beserta label sentimen (positif, negatif,
+netral) yang diberikan oleh pengguna melalui penilaian bintang. Data
+tersebut direncanakan dibagi menjadi data latih, data validasi, dan
+data uji dengan proporsi 70:15:15.
+
+\section{Tahapan Penelitian}
+Penelitian ini direncanakan dilaksanakan melalui tahapan berikut.
+\begin{enumerate}
+  \item \textbf{Studi literatur.} Mengkaji penelitian terdahulu terkait
+        klasifikasi sentimen dan metode LSTM \citep{example2021}.
+  \item \textbf{Pengumpulan data.} Mengumpulkan data ulasan produk
+        beserta label sentimennya.
+  \item \textbf{Praproses data.} Melakukan \textit{case folding},
+        tokenisasi, normalisasi kata tidak baku, penghapusan stopword,
+        dan \textit{stemming}.
+  \item \textbf{Perancangan dan pelatihan model.} Merancang arsitektur
+        LSTM dan melatihnya menggunakan data latih.
+  \item \textbf{Evaluasi model.} Menguji kinerja model menggunakan
+        data uji dan membandingkannya dengan model \textit{baseline}.
+\end{enumerate}
+
+\section{Jadwal Penelitian}
+Penelitian ini direncanakan berlangsung selama satu semester,
+mencakup tahapan studi literatur, pengumpulan dan praproses data,
+perancangan serta pelatihan model, evaluasi, dan penyusunan laporan
+akhir.

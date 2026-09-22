@@ -1,0 +1,62 @@
+% main.tex -- proposal orchestrator: pulls in every bagian file.
+% Template/formatting logic lives in proposal.cls; per-bagian content
+% lives under chapters/ (proposal.md's five "bagian-bagian") -- edit
+% those, not this file, unless you are adding or reordering a bagian.
+% Compile with: xelatex main.tex && bibtex main && xelatex main.tex && xelatex main.tex
+
+\documentclass{proposal}
+
+\title{Judul Penelitian Anda Ditulis di Sini}
+\author{Nama Mahasiswa}
+\nim{NIM Mahasiswa}
+\programStudi{PROGRAM STUDI S2 SAINS DATA DAN KECERDASAN BUATAN}
+\logoFakultas{figures/logo.png}
+
+\begin{document}
+
+\maketitle
+
+% Daftar Isi is its own small roman-numbered front matter: page "i",
+% hidden on its own opening page (proposal.cls's \@makeschapterhead)
+% but still listed as an entry inside the Daftar Isi it belongs to.
+% Bagian content then starts arabic numbering over at 1.
+%
+% \addcontentsline must come after \pagenumbering (so it reads "i",
+% not whatever the cover left \c@page at) but BEFORE \tableofcontents:
+% \tableofcontents's own \chapter* is what actually breaks to this
+% page and drops hyperref's link anchor here, so without \phantomsection
+% first, this entry's bookmark would point at whatever page/anchor
+% came before it instead of at Daftar Isi itself.
+\pagenumbering{roman}
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents
+% Bagian no longer force their own page break (see proposal.cls), so
+% without this the first bagian would start right under a short Daftar
+% Isi listing instead of on its own page.
+\clearpage
+\pagenumbering{arabic}
+
+\input{chapters/bagian1-pendahuluan-dan-latar-belakang-masalah}
+\input{chapters/bagian2-rumusan-masalah}
+\input{chapters/bagian3-tujuan-penelitian}
+\input{chapters/bagian4-ruang-lingkup-penelitian}
+\input{chapters/bagian5-metodologi-penelitian}
+
+% Same fix as Daftar Isi above: \addcontentsline must be captured on
+% Daftar Pustaka's OWN page, forced explicitly first, rather than
+% before \bibliography's internal \chapter*{\bibname} actually breaks
+% the page and creates its anchor -- otherwise this entry's page
+% number and link both resolve to wherever Bagian 5 happened to leave
+% off (its own \chapter*'s later break becomes a no-op immediately
+% after, since nothing has been contributed to this fresh page yet).
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{../thesis/apalike-usu}
+% References are shared with thesis/references.bib rather than
+% duplicated here, since a proposal cites a subset of the same
+% literature the thesis itself will later use.
+\bibliography{../thesis/references}
+
+\end{document}
