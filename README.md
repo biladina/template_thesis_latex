@@ -94,4 +94,4 @@ for the full set of project conventions, and each document's own
 ## License
 
 Licensed under the GNU General Public License v3.0 -- see
-[LICENSE](LICENSE) for the full text.
+[LICENSE.md](LICENSE) for the full text.
