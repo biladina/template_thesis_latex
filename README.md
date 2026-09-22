@@ -90,3 +90,8 @@ change how something looks in the `.cls`, change what it says in the
 for the full set of project conventions, and each document's own
 `thesis.md`/`README.md`-equivalent notes (currently only
 `thesis/thesis.md`) for details specific to that document.
+
+## License
+
+Licensed under the GNU General Public License v3.0 -- see
+[LICENSE](LICENSE) for the full text.
